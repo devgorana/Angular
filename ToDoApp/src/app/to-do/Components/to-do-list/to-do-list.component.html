@@ -1,0 +1,60 @@
+<div class="px-2 py-2 bg-light border-bottom mb-2 fixed">
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter Search String..."
+          #startWith
+        />
+      </div>
+    </div>
+    <div class="col-1">
+      <!-- <div>
+        <button class="btn btn-success" type="button" (click)="onEven()">
+          Even
+        </button>
+      </div> -->
+      <div class="form-group">
+        <select class="form-control" [(ngModel)]="highlightAction">
+          <option selected value="None">None</option>
+          <option value="even">Even</option>
+          <option value="odd">Odd</option>
+        </select>
+      </div>
+    </div>
+    <!-- <div class="col-1">
+      <div>
+        <button class="btn btn-danger" type="button" (click)="onOdd()">
+          Odd
+        </button>
+      </div>
+    </div> -->
+  </div>
+</div>
+
+<div class="px-2 py-2" style="margin-top: 3.3cm">
+  <!-- <h6 [appEvenOddHighlight]="color">Devendra</h6> -->
+  <div class="container-fluid border rounded">
+    <table class="table">
+      <thead>
+        <tr class="">
+          <th scope="col">Id</th>
+          <th scope="col">To Do Title</th>
+          <th scope="col">Assign Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let ToDoDetail of ToDoDetails | filter: startWith.value"
+          [appEvenOddHighlight]="highlightAction"
+        >
+          <th scope="row">{{ ToDoDetail.id }}</th>
+          <td>{{ ToDoDetail.todo }}</td>
+          <td>{{ ToDoDetail.assignDate | date: "dd-MM-yyyy HH:mm a" }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
