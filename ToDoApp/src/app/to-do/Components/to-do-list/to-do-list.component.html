@@ -6,7 +6,8 @@
           type="text"
           class="form-control"
           placeholder="Enter Search String..."
-          #startWith
+          [(ngModel)]="searchTerm"
+          name="searchTerm"
         />
       </div>
     </div>
@@ -46,14 +47,63 @@
         </tr>
       </thead>
       <tbody>
-        <tr
+        <ng-container *ngIf="highlightAction == 'None'">
+          <tr
+            *ngFor="
+              let ToDoDetail of ToDoDetails | filter: searchTerm;
+              let even = even;
+              let odd = odd;
+              let i = index
+            "
+            class=""
+          >
+            <th scope="row">{{ ToDoDetail.id }}</th>
+            <td>{{ ToDoDetail.todo }}</td>
+            <td>{{ ToDoDetail.assignDate | date: "dd-MM-yyyy HH:mm a" }}</td>
+          </tr>
+        </ng-container>
+
+        <ng-container *ngIf="highlightAction == 'even'">
+          <tr
+            *ngFor="
+              let ToDoDetail of ToDoDetails;
+              let even = even;
+              let odd = odd;
+              let i = index
+            "
+            class=""
+            [class.rowHighlight]="odd"
+          >
+            <th scope="row">{{ ToDoDetail.id }}</th>
+            <td>{{ ToDoDetail.todo }}</td>
+            <td>{{ ToDoDetail.assignDate | date: "dd-MM-yyyy HH:mm a" }}</td>
+          </tr>
+        </ng-container>
+
+        <ng-container *ngIf="highlightAction == 'odd'">
+          <tr
+            *ngFor="
+              let ToDoDetail of ToDoDetails;
+              let even = even;
+              let odd = odd;
+              let i = index
+            "
+            class=""
+            [class.rowHighlight]="even"
+          >
+            <th scope="row">{{ ToDoDetail.id }}</th>
+            <td>{{ ToDoDetail.todo }}</td>
+            <td>{{ ToDoDetail.assignDate | date: "dd-MM-yyyy HH:mm a" }}</td>
+          </tr>
+        </ng-container>
+        <!-- <tr
           *ngFor="let ToDoDetail of ToDoDetails | filter: startWith.value"
           [appEvenOddHighlight]="highlightAction"
         >
           <th scope="row">{{ ToDoDetail.id }}</th>
           <td>{{ ToDoDetail.todo }}</td>
           <td>{{ ToDoDetail.assignDate | date: "dd-MM-yyyy HH:mm a" }}</td>
-        </tr>
+        </tr> -->
       </tbody>
     </table>
   </div>

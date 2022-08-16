@@ -8,8 +8,9 @@ import { FetchToDoDataService } from 'src/app/Services/fetch-to-do-data.service'
 })
 export class ToDoListComponent implements OnInit {
   //condition: boolean = true;
+  searchTerm:string = "";
   highlightAction: string = "None";
-  
+  className = "rowHighlight"
   color = 'yellow';
   ToDoDetails: any;
   constructor(private fetchToDoDataService: FetchToDoDataService) { }
