@@ -27,7 +27,7 @@
 </div>
 
 <div class="px-2 py-2" style="margin-top: 3.3cm">
-  <div class="container-fluid border rounded">
+  <div class="container-fluid border rounded" *ngIf="ToDoDetails">
     <table class="table">
       <thead>
         <tr class="">
@@ -56,9 +56,12 @@
         </tr>
       </tbody>
     </table>
-  </div>
-</div>
 
-<div class="d-flex justify-content-end">
-  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    <div class="d-flex justify-content-end">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>
+  <div class="container-fluid border rounded text-center" *ngIf="!ToDoDetails">
+    ------ No Record ------
+  </div>
 </div>
