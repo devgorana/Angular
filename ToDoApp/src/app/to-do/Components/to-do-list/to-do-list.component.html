@@ -56,7 +56,9 @@
         <ng-container *ngIf="highlightAction == 'even'">
           <tr
             *ngFor="
-              let ToDoDetail of ToDoDetails;
+              let ToDoDetail of ToDoDetails
+                | paginate: { itemsPerPage: 10, currentPage: p }
+                | filter: searchTerm;
               let even = even;
               let odd = odd;
               let i = index
@@ -73,7 +75,9 @@
         <ng-container *ngIf="highlightAction == 'odd'">
           <tr
             *ngFor="
-              let ToDoDetail of ToDoDetails;
+              let ToDoDetail of ToDoDetails
+                | paginate: { itemsPerPage: 10, currentPage: p }
+                | filter: searchTerm;
               let even = even;
               let odd = odd;
               let i = index
