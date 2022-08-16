@@ -8,11 +8,9 @@ import { FetchToDoDataService } from 'src/app/Services/fetch-to-do-data.service'
   styleUrls: ['./to-do-list.component.scss']
 })
 export class ToDoListComponent implements OnInit {
-  //condition: boolean = true;
   searchTerm:string = "";
   highlightAction: string = "None";
-  className = "rowHighlight"
-  color = 'yellow';
+  p: number = 1;
   ToDoDetails: ToDoList[] = [];
   constructor(private fetchToDoDataService: FetchToDoDataService) { }
   

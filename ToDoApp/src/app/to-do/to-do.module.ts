@@ -11,6 +11,7 @@ import { ToDoListComponent } from './Components/to-do-list/to-do-list.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EvenOddHighlightDirective } from '../Directives/even-odd-highlight.directive';
 import { FilterPipe } from '../Pipes/filter.pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { FilterPipe } from '../Pipes/filter.pipe';
     ToDoRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   exports: [
     ToDoComponent,

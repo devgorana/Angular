@@ -1,6 +1,7 @@
 <div class="px-2 py-2 bg-light border-bottom mb-2 fixed">
   <div class="row">
-    <div class="col">
+    <div class="col"></div>
+    <div class="col-3">
       <div class="form-group">
         <input
           type="text"
@@ -12,11 +13,6 @@
       </div>
     </div>
     <div class="col-1">
-      <!-- <div>
-        <button class="btn btn-success" type="button" (click)="onEven()">
-          Even
-        </button>
-      </div> -->
       <div class="form-group">
         <select class="form-control" [(ngModel)]="highlightAction">
           <option selected value="None">None</option>
@@ -25,18 +21,10 @@
         </select>
       </div>
     </div>
-    <!-- <div class="col-1">
-      <div>
-        <button class="btn btn-danger" type="button" (click)="onOdd()">
-          Odd
-        </button>
-      </div>
-    </div> -->
   </div>
 </div>
 
 <div class="px-2 py-2" style="margin-top: 3.3cm">
-  <!-- <h6 [appEvenOddHighlight]="color">Devendra</h6> -->
   <div class="container-fluid border rounded">
     <table class="table">
       <thead>
@@ -50,7 +38,9 @@
         <ng-container *ngIf="highlightAction == 'None'">
           <tr
             *ngFor="
-              let ToDoDetail of ToDoDetails | filter: searchTerm;
+              let ToDoDetail of ToDoDetails
+                | paginate: { itemsPerPage: 10, currentPage: p }
+                | filter: searchTerm;
               let even = even;
               let odd = odd;
               let i = index
@@ -96,15 +86,11 @@
             <td>{{ ToDoDetail.assignDate | date: "dd-MM-yyyy HH:mm a" }}</td>
           </tr>
         </ng-container>
-        <!-- <tr
-          *ngFor="let ToDoDetail of ToDoDetails | filter: startWith.value"
-          [appEvenOddHighlight]="highlightAction"
-        >
-          <th scope="row">{{ ToDoDetail.id }}</th>
-          <td>{{ ToDoDetail.todo }}</td>
-          <td>{{ ToDoDetail.assignDate | date: "dd-MM-yyyy HH:mm a" }}</td>
-        </tr> -->
       </tbody>
     </table>
   </div>
+</div>
+
+<div class="d-flex justify-content-end">
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
