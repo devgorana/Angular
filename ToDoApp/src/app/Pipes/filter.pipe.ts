@@ -12,7 +12,7 @@ export class FilterPipe implements PipeTransform {
     }
     //return array.filter(a => a.todo.toLowerCase().startsWith(startWith.toLowerCase()));
     let temp: any[] = [];
-    temp = array.filter((val: any) => val.todo.toLowerCase().startsWith(startWith) || val.id.toLowerCase().startsWith(startWith) || val.assignDate.toLowerCase().startsWith(startWith));
+    temp = array.filter((val: any) => val.todo.toLowerCase().startsWith(startWith.toLowerCase()) || val.id.toLowerCase().startsWith(startWith.toLowerCase()) || val.assignDate.toLowerCase().startsWith(startWith.toLowerCase()));
     return temp;
   }
 
