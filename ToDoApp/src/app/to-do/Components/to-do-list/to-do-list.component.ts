@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToDoList } from 'src/app/Model/toDoList.Model';
 import { FetchToDoDataService } from 'src/app/Services/fetch-to-do-data.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class ToDoListComponent implements OnInit {
   highlightAction: string = "None";
   className = "rowHighlight"
   color = 'yellow';
-  ToDoDetails: any;
+  ToDoDetails: ToDoList[] = [];
   constructor(private fetchToDoDataService: FetchToDoDataService) { }
   
   ngOnInit(): void {
