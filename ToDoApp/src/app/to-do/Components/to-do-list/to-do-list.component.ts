@@ -35,4 +35,7 @@ export class ToDoListComponent implements OnInit {
     this.p = 1;
   }
 
+  trackById(index: number, contact: any) {
+    return contact.id;
+  }
 }

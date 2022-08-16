@@ -43,7 +43,8 @@
               | paginate: { itemsPerPage: 10, currentPage: p };
             let even = even;
             let odd = odd;
-            let i = index
+            let i = index;
+            trackBy: trackById
           "
           [class.rowHighlight]="
             (odd && highlightAction == 'even') ||
