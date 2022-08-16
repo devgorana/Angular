@@ -21,6 +21,13 @@ export class ToDoListComponent implements OnInit {
     })
   }
 
+  // applyFilter(startWith: string) {
+  //   startWith = startWith.trim(); // Remove whitespace
+  //   startWith = startWith.toLowerCase(); // Datasource defaults to lowercase matches
 
+  //   this.ToDoDetails = this.ToDoDetails.filter((val: any) => val.todo.toLowerCase().startsWith(startWith) || val.id.toLowerCase().startsWith(startWith) || val.assignDate.toLowerCase().startsWith(startWith));
+    
+  //   this.p = 1;
+  // }
 
 }

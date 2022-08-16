@@ -10,9 +10,11 @@ export class FilterPipe implements PipeTransform {
     if (!array || !startWith) {
         return array;
     }
-    //return array.filter(a => a.todo.toLowerCase().startsWith(startWith.toLowerCase()));
+    startWith = startWith.trim(); // Remove whitespace
+    startWith = startWith.toLowerCase(); // Datasource defaults to lowercase matches
+
     let temp: any[] = [];
-    temp = array.filter((val: any) => val.todo.toLowerCase().startsWith(startWith.toLowerCase()) || val.id.toLowerCase().startsWith(startWith.toLowerCase()) || val.assignDate.toLowerCase().startsWith(startWith.toLowerCase()));
+    temp = array.filter((val: any) => val.todo.toLowerCase().startsWith(startWith) || val.id.toLowerCase().startsWith(startWith) || val.assignDate.toLowerCase().startsWith(startWith));
     return temp;
   }
 
