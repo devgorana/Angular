@@ -37,58 +37,23 @@
         </tr>
       </thead>
       <tbody>
-        <ng-container *ngIf="highlightAction == 'None'">
-          <tr
-            *ngFor="
-              let ToDoDetail of ToDoDetails
-                | paginate: { itemsPerPage: 10, currentPage: p };
-              let even = even;
-              let odd = odd;
-              let i = index
-            "
-            class=""
-          >
-            <th scope="row">{{ ToDoDetail.id }}</th>
-            <td>{{ ToDoDetail.todo }}</td>
-            <td>{{ ToDoDetail.assignDate | date: "dd-MM-yyyy HH:mm a" }}</td>
-          </tr>
-        </ng-container>
-
-        <ng-container *ngIf="highlightAction == 'even'">
-          <tr
-            *ngFor="
-              let ToDoDetail of ToDoDetails
-                | paginate: { itemsPerPage: 10, currentPage: p };
-              let even = even;
-              let odd = odd;
-              let i = index
-            "
-            class=""
-            [class.rowHighlight]="odd"
-          >
-            <th scope="row">{{ ToDoDetail.id }}</th>
-            <td>{{ ToDoDetail.todo }}</td>
-            <td>{{ ToDoDetail.assignDate | date: "dd-MM-yyyy HH:mm a" }}</td>
-          </tr>
-        </ng-container>
-
-        <ng-container *ngIf="highlightAction == 'odd'">
-          <tr
-            *ngFor="
-              let ToDoDetail of ToDoDetails
-                | paginate: { itemsPerPage: 10, currentPage: p };
-              let even = even;
-              let odd = odd;
-              let i = index
-            "
-            class=""
-            [class.rowHighlight]="even"
-          >
-            <th scope="row">{{ ToDoDetail.id }}</th>
-            <td>{{ ToDoDetail.todo }}</td>
-            <td>{{ ToDoDetail.assignDate | date: "dd-MM-yyyy HH:mm a" }}</td>
-          </tr>
-        </ng-container>
+        <tr
+          *ngFor="
+            let ToDoDetail of ToDoDetails
+              | paginate: { itemsPerPage: 10, currentPage: p };
+            let even = even;
+            let odd = odd;
+            let i = index
+          "
+          [class.rowHighlight]="
+            (odd && highlightAction == 'even') ||
+            (even && highlightAction == 'odd')
+          "
+        >
+          <th scope="row">{{ ToDoDetail.id }}</th>
+          <td>{{ ToDoDetail.todo }}</td>
+          <td>{{ ToDoDetail.assignDate | date: "dd-MM-yyyy HH:mm a" }}</td>
+        </tr>
       </tbody>
     </table>
   </div>
